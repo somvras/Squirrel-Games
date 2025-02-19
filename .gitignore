@@ -1,0 +1,7 @@
+/bin/
+/out/
+*.log
+build/
+.class
+Thumbs.db
+
