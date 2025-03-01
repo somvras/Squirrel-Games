@@ -1,6 +1,6 @@
 package pinkGuards;
 
-public enum Rank {
+public enum Rango {
     WORKER,
     SOLDIER,
     MANAGER
