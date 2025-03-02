@@ -28,4 +28,9 @@ public class Worker extends PinkGuard {
     public String toString() {
         return super.toString() + ", Departamento: " + departamento;
     }
+
+	@Override
+	public String getNombre() {
+		return this.getNombre();
+	}
 }

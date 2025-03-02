@@ -18,7 +18,9 @@ public abstract class PinkGuard {
         return supervisor;
     }
     
-    /**
+    public abstract String getNombre();
+
+	/**
      * Asigna un supervisor validando que tenga un rango superior.
      * Si el supervisor es nulo, se asigna sin comprobación.
      */
