@@ -53,11 +53,10 @@ public class Concursante {
 	  * @param apellidos Los apellidos del participante
 	  * @param nacionalidad La nacionalidad del participante
 	  * @param fecha_nacim La fecha de nacimiento del participante
-	  * @param sexo El sexo del participante
+	  * @param sexo El sexo del participante. True para V y false para M
 	  * @param deuda La deuda acumulada previa del participante.
 	  * @param nombreReal. El nombre auténtico del participante
 	  * @param apellidosReales. Los apellidos auténticos del participante.
-	  * @throws SexoNoValidoExcepcion Si el sexo introducido es diferente de "V" o "M"
 	  */
 	 public Concursante(int id, String nombreFalso, String apellidosFalsos, String nacionalidad, String fecha_nacim, boolean sexo, double deuda, String nombreReal, String apellidosReales){
 		 this.id = id;
@@ -134,13 +133,6 @@ public class Concursante {
 	
 	@Override
 	public String toString(){
-		char sexoChar;
-		if (sexo) {
-			sexoChar = 'V';
-		} else {
-			sexoChar = 'M';
-		}
-		
 		String fechaNacimientoS = this.fechaNacim.toString().substring(8) + "/" + this.fechaNacim.toString().substring(5,7) + "/" + this.fechaNacim.toString().substring(0,4);
 		
 		String info = """
@@ -153,14 +145,14 @@ public class Concursante {
 				Deuda acumulada: %.2f
 				""";;
 		if (!this.esInfiltrado) {
-			return String.format(info, this.id, this.nombre, this.apellidos, fechaNacimientoS, this.nacionalidad, sexoChar, this.deudaAcumulada);
+			return String.format(info, this.id, this.nombre, this.apellidos, fechaNacimientoS, this.nacionalidad, sexo ? 'V' : 'M', this.deudaAcumulada);
 		} else {
 			info += """
 					INFILTRADO
 					Nombre Real: %s
 					Apellidos Reales: %s
 					""";
-			return String.format(info, this.id, this.nombre, this.apellidos, fechaNacimientoS, this.nacionalidad, sexoChar, this.deudaAcumulada, this.nombreReal, this.apellidosReales);
+			return String.format(info, this.id, this.nombre, this.apellidos, fechaNacimientoS, this.nacionalidad, sexo ? 'V' : 'M', this.deudaAcumulada, this.nombreReal, this.apellidosReales);
 		}
 		 
 		

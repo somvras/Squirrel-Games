@@ -38,4 +38,9 @@ public class Soldier extends PinkGuard {
     public String toString() {
         return super.toString() + ", Arma: " + arma + ", Munición: " + municion;
     }
+
+	@Override
+	public String getNombre() {
+		return this.getNombre();
+	}
 }

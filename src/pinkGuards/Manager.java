@@ -51,4 +51,9 @@ public class Manager extends PinkGuard {
     public String toString() {
         return super.toString() + ", Arma: " + ARMA_CONSTANTE + ", Munición: " + municion + ", Equipo: " + equipo;
     }
+
+	@Override
+	public String getNombre() {
+		return this.getNombre();
+	}
 }
