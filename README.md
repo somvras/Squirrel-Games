@@ -21,3 +21,7 @@ Este proyecto es un sistema de gestión para los juegos organizados por **Squirr
 - **Alberto:** Desarrollo y documentación de los módulos de Concursantes y sus excepciones.
 - **Carolina:** Desarrollo y documentación de los módulos de Pruebas, Ediciones y sus excepciones.
 - **Mikael:** Desarrollo y documentación de los módulos de Pink Guards y sus excepciones.
+
+## 🌐Página web
+   Para ver la página donde se publique la
+documentación generada con Javadoc y el reporte de cobertura pulsa aqui-->  [:)]([https://url-del-enlace.com](https://somvras.github.io/Squirrel-Games/))
