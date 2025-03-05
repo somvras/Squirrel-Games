@@ -16,7 +16,7 @@ public class Concursante {
 	 private LocalDate fechaNacim;
 	 private double deudaAcumulada;
 	 private boolean sexo, esInfiltrado;
-	 //private float coefAptitud, coefVoluntad;
+	 private float coefAptitud;
 	 
 	 
 	 /**
@@ -31,7 +31,7 @@ public class Concursante {
 	  * @param esInfiltrado Indica si el participante es un topo de la organización
 	  * @throws SexoNoValidoExcepcion Si el sexo introducido es diferente de "V" o "M"
 	  */
-	 public Concursante(int id, String nombre, String apellidos, String nacionalidad, String fecha_nacim, boolean sexo, double deuda){
+	 public Concursante(int id, String nombre, String apellidos, String nacionalidad, String fecha_nacim, boolean sexo, double deuda, float aptitud){
 		 this.id = id;
 		 this.nombre = nombre;
 		 this.apellidos = apellidos;
@@ -41,8 +41,7 @@ public class Concursante {
 		 this.sexo = sexo;
 		this.deudaAcumulada = deuda;
 		this.esInfiltrado = false; 
-		 //this.coefAptitud = coefAptitud;
-		//this.coefVoluntad = coefVoluntad;
+		 this.coefAptitud = aptitud;
 	 }
 
 	 /**
@@ -58,7 +57,7 @@ public class Concursante {
 	  * @param nombreReal. El nombre auténtico del participante
 	  * @param apellidosReales. Los apellidos auténticos del participante.
 	  */
-	 public Concursante(int id, String nombreFalso, String apellidosFalsos, String nacionalidad, String fecha_nacim, boolean sexo, double deuda, String nombreReal, String apellidosReales){
+	 public Concursante(int id, String nombreFalso, String apellidosFalsos, String nacionalidad, String fecha_nacim, boolean sexo, double deuda, String nombreReal, String apellidosReales, float aptitud){
 		 this.id = id;
 		 this.nombre = nombreFalso;
 		 this.apellidos = apellidosFalsos;
@@ -70,8 +69,7 @@ public class Concursante {
 		this.esInfiltrado = true;
 		this.nombreReal = nombreReal;
 		this.apellidosReales = apellidosReales;
-		 //this.coefAptitud = coefAptitud;
-		//this.coefVoluntad = coefVoluntad;
+		 this.coefAptitud = aptitud;
 	 }
 
 	public double getDeudaAcumulada() {
@@ -127,7 +125,13 @@ public class Concursante {
 		return apellidosReales;
 	}
 
-	public boolean isEsInfiltrado() {
+	
+	
+	public float getCoefAptitud() {
+		return coefAptitud;
+	}
+
+	public boolean esInfiltrado() {
 		return esInfiltrado;
 	}
 	
