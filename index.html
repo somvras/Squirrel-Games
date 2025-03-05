@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Squirrel Games</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1 id="titulo">Squirrel Games</h1>
+    </header>
+    <section class="descripcion">
+        <p>
+            Este proyecto es un sistema de gestión para los juegos organizados por <strong>Squirrel Games</strong>.
+            Su propósito es controlar todos los aspectos relacionados con los eventos, incluyendo la administración de concursantes, 
+            la simulación de pruebas y la gestión del personal encargado.
+        </p>
+        
+        <h2>Funcionalidades Principales</h2>
+        <ul id="uno">
+            <li>
+                <strong>Gestión de Concursantes:</strong> Permite registrar y administrar la información de los participantes, tanto concursantes regulares como infiltrados. Se controlan datos personales, fecha de nacimiento, deuda acumulada, y se gestionan restricciones específicas (por ejemplo, no se pueden eliminar concursantes infiltrados).
+            </li>
+            <li>
+                <strong>Simulación de Pruebas:</strong> Cada edición de los juegos incluye diversas pruebas en las que participan los concursantes. El sistema permite simular estas pruebas, eliminando aleatoriamente jugadores hasta alcanzar un porcentaje dado y calculando el porcentaje de éxito de la prueba.
+            </li>
+            <li>
+                <strong>Gestión de Pink Guards:</strong> Se definen tres tipos de personal:
+                <ul>
+                    <li><strong>Worker:</strong> Realiza tareas logísticas y de mantenimiento, asignado a un departamento específico.</li>
+                    <li><strong>Soldier:</strong> Encargado de mantener el orden, utiliza armas específicas y cuenta con una cantidad de munición determinada.</li>
+                    <li><strong>Manager:</strong> De mayor rango, supervisa tanto a los Pink Guards como el desarrollo de las pruebas. Siempre porta una <em>Smith &amp; Wesson Model 10</em> y gestiona su propio equipo.</li>
+                </ul>
+                La jerarquía se respeta mediante validaciones que lanzan excepciones personalizadas en caso de asignar supervisores de igual o menor rango.
+            </li>
+        </ul>
+        <h2>Colaboradores</h2>
+        <ul>
+            <li><strong>Alberto:</strong> Desarrollo y documentación de los módulos de Concursantes y sus excepciones.</li>
+            <li><strong>Carolina:</strong> Desarrollo y documentación de los módulos de Pruebas, Ediciones y sus excepciones.</li>
+            <li><strong>Mikael:</strong> Desarrollo y documentación de los módulos de Pink Guards y sus excepciones.</li>
+        </ul>
+    </section>
+    <main>
+        <section class="tarjetas">
+            <div class="tarjeta">
+                <h3>PRUEBAS</h3>
+                <a href="apuntes.html">Ver el reporte de cobertura</a>
+            </div>
+            <div class="tarjeta">
+                <h3>DOCUMENTACIÓN</h3>
+                <a href="practicas.html">Ver la documentación con Javadoc</a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="marquee">
+          <div class="shape square"></div>
+          <div class="shape triangle"></div>
+          <div class="shape circle"></div>
+        </div>
+      </footer>
+      
+</body>
+</html>
