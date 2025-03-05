@@ -1,4 +1,4 @@
-package pruebas;
+package Excepciones;
 
 public class IntentoDeEliminarInfiltradoException extends Exception {
 
