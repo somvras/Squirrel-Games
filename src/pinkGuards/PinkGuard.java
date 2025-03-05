@@ -30,7 +30,11 @@ public abstract class PinkGuard {
         this.nombre = nombre;
     }
     
-    /**
+    public int getId() {
+		return id;
+	}
+
+	/**
      * Devuelve el rango del PinkGuard.
      * <p>
      * Este método debe ser implementado por cada subclase.

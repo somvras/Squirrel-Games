@@ -3,8 +3,10 @@ package pruebas;
 import java.util.ArrayList;
 
 import Excepciones.DificultadNoValidaExcepcion;
+import Excepciones.ResponsableNoEsManagerException;
 import concursantes.Concursante;
-import pinkGuards.Manager;
+import pinkGuards.PinkGuard;
+import pinkGuards.Rango;
 
 /**
  * La clase Prueba contiene el constructor de las pruebas en las que participan los concursante y métodos algunas funciones que atañen a éstas
@@ -17,23 +19,58 @@ import pinkGuards.Manager;
 
 public class Prueba {
 
+	
 	private String nombre;
 	private String desc;
-	private ArrayList<Concursante> participantes; //Participante
-	private ArrayList<Concursante> eliminados; //Participante
-	private ArrayList<Concursante> vencedores; //Participante
-	private Manager responsable; //Pink Guard
+	private ArrayList<Concursante> participantes;
+	private ArrayList<Concursante> eliminados;
+	private ArrayList<Concursante> vencedores;
+	private PinkGuard responsable;
 	
-	public Prueba(String nombre, String desc, ArrayList<Concursante> participantes, Manager responsable) { //Participante, Pink Guard
+	
+	//Constructor//
+	public Prueba(String nombre, String desc, ArrayList<Concursante> participantes, PinkGuard responsable) throws ResponsableNoEsManagerException {
+		if(!responsable.getRango().equals(Rango.MANAGER)) {
+			throw new ResponsableNoEsManagerException("El responsable asignado no es del rango adecuado");
+		}
 		this.nombre = nombre;
 		this.desc = desc;
 		this.participantes = participantes;
-		this.eliminados = new ArrayList<Concursante>(); //Participante
-		this.vencedores = new ArrayList<Concursante>(); //Participante
+		this.eliminados = new ArrayList<Concursante>();
+		this.vencedores = new ArrayList<Concursante>();
 		this.responsable = responsable;
 	}
+	///////////
 	
-	//GetSet
+	
+	//Getters//
+	public String getNombre() {
+		return nombre;
+	}
+
+	public String getDesc() {
+		return desc;
+	}
+
+	public ArrayList<Concursante> getParticipantes() {
+		return participantes;
+	}
+
+	public ArrayList<Concursante> getEliminados() {
+		return eliminados;
+	}
+
+	public ArrayList<Concursante> getVencedores() {
+		return vencedores;
+	}
+
+	public PinkGuard getResponsable() {
+		return responsable;
+	}
+	///////////
+	
+	
+	//Metodos//
 	
 	/*
 	 * Método que simula una prueba. Mantiene la lista de participantes intacta, para futuras consultas. Crea nuevas listas de vencedores y eliminados en
@@ -41,6 +78,7 @@ public class Prueba {
 	 * @param dificultad El porcentaje de supervivencia para los participantes.
 	 * @throws DificultadNoValidaExcepcion Si la dificultad no está entre 0 y 100.
 	 */
+	
 	public void simulacion(float dificultad) throws DificultadNoValidaExcepcion {
 		if (dificultad < 0 || dificultad > 100) {
 			throw new DificultadNoValidaExcepcion("La dificultad introducida está fuera de los parámetros aceptables (entre 0 y 100)");
@@ -67,13 +105,23 @@ public class Prueba {
 			}
 		}
 		*/
+		System.out.println(this.toString());
 	}
+	
 	/*
 	public float porcentajeExito(Concursante concursante) {
 		return (float)(Math.random()*concursante.getCoefAptitud());
 	}
 	*/
 	
+	public float porcentajeExito(float dificultad) throws DificultadNoValidaExcepcion {
+		if (dificultad < 0 || dificultad > 100) {
+			throw new DificultadNoValidaExcepcion("La dificultad introducida está fuera de los parámetros aceptables (entre 0 y 100)");
+		}
+		return 100 - dificultad;
+	}
+	
+
 	@Override
 	public String toString() {
 		String nombres_participantes = "";
@@ -91,15 +139,17 @@ public class Prueba {
 			nombres_eliminados += concursante.getNombre() + " " + concursante.getApellidos() + ", ";
 		}
 		
-		String info= """
+		/*String info= """
 				Nombre de la prueba: %s
 				Descripción: %s
 				Participantes: %s
 				Vencedores: %s
 				Eliminados: %s
 				Manager: %s
-				""";
-		return String.format(info, this.nombre, this.desc, nombres_participantes.substring(0, nombres_participantes.length() - 2), nombres_vencedores.substring(0, nombres_vencedores.length() - 2), nombres_eliminados.substring(0, nombres_eliminados.length() - 2), this.responsable.getNombre());
+				""";*/
+		return "Prueba: "+this.nombre+"\nDescripción: "+this.desc+"\nParticipantes: "+nombres_participantes+
+				"\nVencedores: "+nombres_vencedores+"\nEliminados: "+nombres_eliminados+"\nManager: "+this.responsable.getNombre();
+		//return String.format(info, this.nombre, this.desc, nombres_participantes.substring(0, nombres_participantes.length() - 2), nombres_vencedores.substring(0, nombres_vencedores.length() - 2), nombres_eliminados.substring(0, nombres_eliminados.length() - 2), this.responsable.getNombre());
 	}
 	
 }
