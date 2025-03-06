@@ -8,7 +8,7 @@ public class ConcursanteTest {
 	@BeforeAll
 	Concursante c1 = new Concursante(001, "Gacela", "Thomson", "Cudeira", "2000-01-01", true, 20000);
 	
-	@Test 
+	@Test
 	@DisplayName ("Creador de concursante normal")
 	void ConcursanteNormalTest {
 		assertEquals(c1.toString(), """
