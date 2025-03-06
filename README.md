@@ -18,10 +18,9 @@ Este proyecto es un sistema de gestión para los juegos organizados por **Squirr
   La jerarquía se respeta mediante validaciones que lanzan excepciones personalizadas en caso de asignar supervisores de igual o menor rango.
 
 ## Colaboradores
-- **Alberto:** Desarrollo y documentación de los módulos de Concursantes y sus excepciones.
-- **Carolina:** Desarrollo y documentación de los módulos de Pruebas, Ediciones y sus excepciones.
-- **Mikael:** Desarrollo y documentación de los módulos de Pink Guards y sus excepciones.
+- **Alberto:** Desarrollo, documentación y pruebas de los módulos de Concursantes y sus excepciones.
+- **Carolina:** Desarrollo, documentación y pruebas de los módulos de Pruebas, Ediciones y sus excepciones.
+- **Mikael:** Desarrollo, documentación y pruebas de los módulos de Pink Guards y sus excepciones. Desarrollo de la web.
 
 ## 🌐Página web
-   Para ver la página donde se publique la
-documentación generada con Javadoc y el reporte de cobertura pulsa aqui-->  [:)](https://somvras.github.io/Squirrel-Games/)
+   Para ver la página donde se publique la documentación generada con Javadoc y el reporte de cobertura pulsa <br> aqui -->  [:)](https://somvras.github.io/Squirrel-Games/)
