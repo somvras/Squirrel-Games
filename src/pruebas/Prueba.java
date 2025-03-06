@@ -114,6 +114,12 @@ public class Prueba {
 	}
 	*/
 	
+	/**
+	 * Método que devuelve la cantidad porcentual de participantes que superan la prueba en base a su dificultad
+	 * @param dificultad La dificultad de la prueba
+	 * @return El porcentaje de supervivientes de la prueba
+	 * @throws DificultadNoValidaExcepcion
+	 */
 	public float porcentajeExito(float dificultad) throws DificultadNoValidaExcepcion {
 		if (dificultad < 0 || dificultad > 100) {
 			throw new DificultadNoValidaExcepcion("La dificultad introducida está fuera de los parámetros aceptables (entre 0 y 100)");
@@ -139,17 +145,8 @@ public class Prueba {
 			nombres_eliminados += concursante.getNombre() + " " + concursante.getApellidos() + ", ";
 		}
 		
-		/*String info= """
-				Nombre de la prueba: %s
-				Descripción: %s
-				Participantes: %s
-				Vencedores: %s
-				Eliminados: %s
-				Manager: %s
-				""";*/
 		return "Prueba: "+this.nombre+"\nDescripción: "+this.desc+"\nParticipantes: "+nombres_participantes+
 				"\nVencedores: "+nombres_vencedores+"\nEliminados: "+nombres_eliminados+"\nManager: "+this.responsable.getNombre();
-		//return String.format(info, this.nombre, this.desc, nombres_participantes.substring(0, nombres_participantes.length() - 2), nombres_vencedores.substring(0, nombres_vencedores.length() - 2), nombres_eliminados.substring(0, nombres_eliminados.length() - 2), this.responsable.getNombre());
 	}
 	
 }

@@ -18,7 +18,7 @@ Este proyecto es un sistema de gestión para los juegos organizados por **Squirr
   La jerarquía se respeta mediante validaciones que lanzan excepciones personalizadas en caso de asignar supervisores de igual o menor rango.
 
 ## Colaboradores
-- **Alberto:** Desarrollo y documentación de los módulos de Concursantes y sus excepciones.
+- **Alberto:** Desarrollo y documentación de los módulos de Concursantes, Pruebas y sus excepciones.
 - **Carolina:** Desarrollo y documentación de los módulos de Pruebas, Ediciones y sus excepciones.
 - **Mikael:** Desarrollo y documentación de los módulos de Pink Guards y sus excepciones.
 
