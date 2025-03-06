@@ -14,7 +14,6 @@ import pinkGuards.Rango;
  * @version 1.0
  * @see Concursante
  * @see PinkGuard
- * @see Edicion
  */
 
 public class Prueba {
@@ -29,6 +28,14 @@ public class Prueba {
 	
 	
 	//Constructor//
+	/**
+	 * Constructor básico de las pruebas
+	 * @param nombre Nombre de la prueba
+	 * @param desc Descripción de la prueba
+	 * @param participantes Lista de concursantes que participan en la prueba
+	 * @param responsable Manager al mando de la prueba
+	 * @throws ResponsableNoEsManagerException Si el pink guard asignado no es del rango manager
+	 */
 	public Prueba(String nombre, String desc, ArrayList<Concursante> participantes, PinkGuard responsable) throws ResponsableNoEsManagerException {
 		if(!responsable.getRango().equals(Rango.MANAGER)) {
 			throw new ResponsableNoEsManagerException("El responsable asignado no es del rango adecuado");
@@ -44,6 +51,9 @@ public class Prueba {
 	
 	
 	//Getters//
+	/**
+	 * 
+	 */
 	public String getNombre() {
 		return nombre;
 	}
@@ -72,13 +82,12 @@ public class Prueba {
 	
 	//Metodos//
 	
-	/*
+	/**
 	 * Método que simula una prueba. Mantiene la lista de participantes intacta, para futuras consultas. Crea nuevas listas de vencedores y eliminados en
 	 * base a la dificultad introducida.
 	 * @param dificultad El porcentaje de supervivencia para los participantes.
 	 * @throws DificultadNoValidaExcepcion Si la dificultad no está entre 0 y 100.
 	 */
-	
 	public void simulacion(float dificultad) throws DificultadNoValidaExcepcion {
 		if (dificultad < 0 || dificultad > 100) {
 			throw new DificultadNoValidaExcepcion("La dificultad introducida está fuera de los parámetros aceptables (entre 0 y 100)");
@@ -113,7 +122,13 @@ public class Prueba {
 		return (float)(Math.random()*concursante.getCoefAptitud());
 	}
 	*/
-	
+
+	/**
+	 * Método que calcula el porcentaje de éxito en una prueba
+	 * @param dificultad Nivel de dificultad de la prueba
+	 * @return El porcentaje de éxito calculado en base a la dificultad
+	 * @throws DificultadNoValidaExcepcion Si el nivel de dificultad se sale de los límites establecidos
+	 */
 	public float porcentajeExito(float dificultad) throws DificultadNoValidaExcepcion {
 		if (dificultad < 0 || dificultad > 100) {
 			throw new DificultadNoValidaExcepcion("La dificultad introducida está fuera de los parámetros aceptables (entre 0 y 100)");
