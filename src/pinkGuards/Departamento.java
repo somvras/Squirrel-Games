@@ -11,8 +11,20 @@ package pinkGuards;
  * @see Worker
  */
 public enum Departamento {
+    /**
+     * Departamento de limpieza de eliminados.
+     */
     LIMPIEZA_ELIMINADOS,
+    /**
+     * Departamento de preparación de juegos.
+     */
     PREPARACION_JUEGOS,
+    /**
+     * Departamento de limpieza y mantenimiento.
+     */
     LIMPIEZA_Y_MANTENIMIENTO,
+    /**
+     * Departamento de distribución de alimentos.
+     */
     DISTRIBUCION_ALIMENTOS
 }
