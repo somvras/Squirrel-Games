@@ -24,4 +24,4 @@ Este proyecto es un sistema de gestión para los juegos organizados por **Squirr
 
 ## 🌐Página web
    Para ver la página donde se publique la
-documentación generada con Javadoc y el reporte de cobertura pulsa aqui-->  [:)]([https://url-del-enlace.com](https://somvras.github.io/Squirrel-Games/))
+documentación generada con Javadoc y el reporte de cobertura pulsa aqui-->  [:)](https://somvras.github.io/Squirrel-Games/)
