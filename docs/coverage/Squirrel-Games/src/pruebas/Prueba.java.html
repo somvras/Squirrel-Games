@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>Prueba.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">Squirrel-Games (7 mar 2025 19:23:17)</a> &gt; <a href="../../index.html" class="el_group">Squirrel-Games</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">pruebas</a> &gt; <span class="el_source">Prueba.java</span></div><h1>Prueba.java</h1><pre class="source lang-java linenums">package pruebas;
+
+import java.util.ArrayList;
+
+import Excepciones.DificultadNoValidaExcepcion;
+import Excepciones.IntentoDeEliminarInfiltradoException;
+import Excepciones.ResponsableNoEsManagerException;
+import concursantes.Concursante;
+import pinkGuards.PinkGuard;
+import pinkGuards.Rango;
+
+/**
+ * La clase Prueba contiene el constructor de las pruebas en las que participan los concursante y métodos algunas funciones que atañen a éstas
+ * @author Carolina, Alberto
+ * @version 1.0
+ * @see Concursante
+ * @see PinkGuard
+ */
+
+public class Prueba {
+
+	
+	private String nombre;
+	private String desc;
+	private ArrayList&lt;Concursante&gt; participantes;
+	private ArrayList&lt;Concursante&gt; eliminados;
+	private ArrayList&lt;Concursante&gt; vencedores;
+	private PinkGuard responsable;
+	
+	
+	//Constructor//
+	/**
+	 * Constructor básico de las pruebas
+	 * @param nombre Nombre de la prueba
+	 * @param desc Descripción de la prueba
+	 * @param participantes Lista de concursantes que participan en la prueba
+	 * @param responsable Manager al mando de la prueba
+	 * @throws ResponsableNoEsManagerException Si el pink guard asignado no es del rango manager
+	 */
+<span class="fc" id="L40">	public Prueba(String nombre, String desc, ArrayList&lt;Concursante&gt; participantes, PinkGuard responsable) throws ResponsableNoEsManagerException {</span>
+<span class="pc bpc" id="L41" title="1 of 2 branches missed.">		if(!responsable.getRango().equals(Rango.MANAGER)) {</span>
+<span class="nc" id="L42">			throw new ResponsableNoEsManagerException(&quot;El responsable asignado no es del rango adecuado&quot;);</span>
+		}
+<span class="fc" id="L44">		this.nombre = nombre;</span>
+<span class="fc" id="L45">		this.desc = desc;</span>
+<span class="fc" id="L46">		this.participantes = participantes;</span>
+<span class="fc" id="L47">		this.eliminados = new ArrayList&lt;Concursante&gt;();</span>
+<span class="fc" id="L48">		this.vencedores = new ArrayList&lt;Concursante&gt;();</span>
+<span class="fc" id="L49">		this.responsable = responsable;</span>
+<span class="fc" id="L50">	}</span>
+	///////////
+	
+	
+	//Getters//
+	/**
+	 * 
+	 */
+	public String getNombre() {
+<span class="nc" id="L59">		return nombre;</span>
+	}
+
+	public String getDesc() {
+<span class="nc" id="L63">		return desc;</span>
+	}
+
+	public ArrayList&lt;Concursante&gt; getParticipantes() {
+<span class="nc" id="L67">		return participantes;</span>
+	}
+
+	public ArrayList&lt;Concursante&gt; getEliminados() {
+<span class="nc" id="L71">		return eliminados;</span>
+	}
+
+	public ArrayList&lt;Concursante&gt; getVencedores() {
+<span class="nc" id="L75">		return vencedores;</span>
+	}
+
+	public PinkGuard getResponsable() {
+<span class="nc" id="L79">		return responsable;</span>
+	}
+	///////////
+	
+	
+	//Metodos//
+	
+	/**
+	 * Método que simula una prueba. Mantiene la lista de participantes intacta, para futuras consultas. Crea nuevas listas de vencedores y eliminados en
+	 * base a la dificultad introducida.
+	 * @param dificultad El porcentaje de supervivencia para los participantes.
+	 * @throws DificultadNoValidaExcepcion Si la dificultad no está entre 0 y 100.
+	 * @throws IntentoDeEliminarInfiltradoException Si en la prueba se elimina a un infiltrado
+	 */
+	public void simulacion(float dificultad) throws DificultadNoValidaExcepcion, IntentoDeEliminarInfiltradoException {
+<span class="pc bpc" id="L94" title="1 of 4 branches missed.">		if (dificultad &lt; 0 || dificultad &gt; 100) {</span>
+<span class="fc" id="L95">			throw new DificultadNoValidaExcepcion(&quot;La dificultad introducida está fuera de los parámetros aceptables (entre 0 y 100)&quot;);</span>
+		}
+		
+<span class="fc" id="L98">		int cantidadEliminados = (int) Math.round(this.participantes.size() * dificultad / 100);</span>
+		
+		Concursante concursanteEliminado;
+<span class="pc bpc" id="L101" title="1 of 2 branches missed.">		for (int i = 1; i &lt;= cantidadEliminados; i++) {</span>
+<span class="fc" id="L102">			concursanteEliminado = this.participantes.get((int) Math.floor(Math.random() * this.participantes.size()));</span>
+<span class="pc bpc" id="L103" title="1 of 2 branches missed.">			if (!concursanteEliminado.esInfiltrado()) {</span>
+<span class="nc" id="L104">				eliminados.add(concursanteEliminado);</span>
+<span class="nc" id="L105">			} else {</span>
+<span class="fc" id="L106">				throw new IntentoDeEliminarInfiltradoException(&quot;No es posible eliminar a uno de los jugadores. Póngase en contacto de inmediato con su supervisor&quot;);</span>
+			}
+			
+		}
+		
+<span class="nc bnc" id="L111" title="All 2 branches missed.">		for (Concursante concursante : participantes) {</span>
+<span class="nc bnc" id="L112" title="All 2 branches missed.">			if (!eliminados.contains(concursante)) {</span>
+<span class="nc" id="L113">				vencedores.add(concursante);</span>
+			}
+		}
+		
+<span class="nc" id="L117">		System.out.println(this.toString());</span>
+<span class="nc" id="L118">	}</span>
+	
+
+	/**
+	 * Método que calcula el porcentaje de éxito en una prueba
+	 * @param dificultad Nivel de dificultad de la prueba
+	 * @return El porcentaje de éxito calculado en base a la dificultad
+	 * @throws DificultadNoValidaExcepcion Si el nivel de dificultad se sale de los límites establecidos
+
+	 */
+	public float porcentajeExito(float dificultad) throws DificultadNoValidaExcepcion {
+<span class="nc bnc" id="L129" title="All 4 branches missed.">		if (dificultad &lt; 0 || dificultad &gt; 100) {</span>
+<span class="nc" id="L130">			throw new DificultadNoValidaExcepcion(&quot;La dificultad introducida está fuera de los parámetros aceptables (entre 0 y 100)&quot;);</span>
+		}
+<span class="nc" id="L132">		return 100 - dificultad;</span>
+	}
+	
+
+	@Override
+	public String toString() {
+<span class="nc" id="L138">		String nombres_participantes = &quot;&quot;;</span>
+<span class="nc bnc" id="L139" title="All 2 branches missed.">		for (Concursante concursante : this.participantes) {</span>
+<span class="nc" id="L140">			nombres_participantes += concursante.getNombre() + &quot; &quot; + concursante.getApellidos() + &quot;, &quot;;</span>
+		}
+		
+<span class="nc" id="L143">		String nombres_vencedores= &quot;&quot;;</span>
+<span class="nc bnc" id="L144" title="All 2 branches missed.">		for (Concursante concursante : this.vencedores) {</span>
+<span class="nc" id="L145">			nombres_vencedores+= concursante.getNombre() + &quot; &quot; + concursante.getApellidos() + &quot;, &quot;;</span>
+		}
+		
+<span class="nc" id="L148">		String nombres_eliminados= &quot;&quot;;</span>
+<span class="nc bnc" id="L149" title="All 2 branches missed.">		for (Concursante concursante : this.eliminados) {</span>
+<span class="nc" id="L150">			nombres_eliminados += concursante.getNombre() + &quot; &quot; + concursante.getApellidos() + &quot;, &quot;;</span>
+		}
+		
+<span class="nc" id="L153">		return &quot;Prueba: &quot;+this.nombre+&quot;\nDescripción: &quot;+this.desc+&quot;\nParticipantes: &quot;+nombres_participantes+</span>
+<span class="nc" id="L154">				&quot;\nVencedores: &quot;+nombres_vencedores+&quot;\nEliminados: &quot;+nombres_eliminados+&quot;\nManager: &quot;+this.responsable.getNombre();</span>
+	}
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span>Squirrel-Games (7 mar 2025 19:23:17)</div></body></html>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>PinkGuardTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">Squirrel-Games (7 mar 2025 19:23:17)</a> &gt; <a href="../../index.html" class="el_group">Squirrel-Games</a> &gt; <a href="../index.html" class="el_bundle">tests</a> &gt; <a href="index.source.html" class="el_package">test</a> &gt; <span class="el_source">PinkGuardTest.java</span></div><h1>PinkGuardTest.java</h1><pre class="source lang-java linenums">package test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+
+import Excepciones.SupervisorNoValidoExcepcion;
+import pinkGuards.PinkGuard;
+import pinkGuards.Rango;
+
+/**
+ * Pruebas unitarias para la clase abstracta PinkGuard utilizando una clase Dummy.
+ * 
+ * @author Mikael
+ * @version 1.0
+ */
+@Tag(&quot;PinkGuard&quot;)
+@DisplayName(&quot;Pruebas de la clase PinkGuard&quot;)
+<span class="fc" id="L21">class PinkGuardTest {</span>
+
+    /**
+     * Clase Dummy para instanciar PinkGuard.
+     */
+    private static class DummyPinkGuard extends PinkGuard {
+        private final Rango rango;
+
+        /**
+         * Crea una instancia de DummyPinkGuard.
+         * 
+         * @param id     Identificador único.
+         * @param nombre Nombre del PinkGuard.
+         * @param rango  Rango asignado.
+         */
+        public DummyPinkGuard(int id, String nombre, Rango rango) {
+<span class="fc" id="L37">            super(id, nombre);</span>
+<span class="fc" id="L38">            this.rango = rango;</span>
+<span class="fc" id="L39">        }</span>
+
+        /**
+         * Devuelve el rango asignado.
+         * 
+         * @return El rango.
+         */
+        @Override
+        public Rango getRango() {
+<span class="fc" id="L48">            return rango;</span>
+        }
+
+        /**
+         * Retorna el nombre asignado.
+         * 
+         * @return El nombre.
+         */
+        @Override
+        public String getNombre() {
+<span class="fc" id="L58">            return nombre;</span>
+        }
+    }
+
+    @Test
+    @DisplayName(&quot;Verificar getId y getNombre en DummyPinkGuard&quot;)
+    void testGetIdAndNombre() {
+<span class="fc" id="L65">        DummyPinkGuard dummy = new DummyPinkGuard(1, &quot;Dummy&quot;, Rango.WORKER);</span>
+<span class="fc" id="L66">        assertEquals(1, dummy.getId());</span>
+<span class="fc" id="L67">        assertEquals(&quot;Dummy&quot;, dummy.getNombre());</span>
+<span class="fc" id="L68">    }</span>
+
+    @Test
+    @DisplayName(&quot;Asignar supervisor válido&quot;)
+    void testSetSupervisorValido() {
+<span class="fc" id="L73">        DummyPinkGuard worker = new DummyPinkGuard(2, &quot;Worker&quot;, Rango.WORKER);</span>
+<span class="fc" id="L74">        DummyPinkGuard soldier = new DummyPinkGuard(3, &quot;Soldier&quot;, Rango.SOLDIER);</span>
+        try {
+<span class="fc" id="L76">            worker.setSupervisor(soldier);</span>
+<span class="fc" id="L77">            assertEquals(soldier, worker.getSupervisor());</span>
+<span class="pc" id="L78">        } catch (SupervisorNoValidoExcepcion e) {</span>
+<span class="nc" id="L79">            fail(&quot;No se esperaba excepción para asignación válida.&quot;);</span>
+        }
+<span class="fc" id="L81">    }</span>
+
+    @Test
+    @DisplayName(&quot;Asignar supervisor inválido&quot;)
+    void testSetSupervisorInvalido() {
+<span class="fc" id="L86">        DummyPinkGuard worker1 = new DummyPinkGuard(4, &quot;Worker1&quot;, Rango.WORKER);</span>
+<span class="fc" id="L87">        DummyPinkGuard worker2 = new DummyPinkGuard(5, &quot;Worker2&quot;, Rango.WORKER);</span>
+<span class="pc" id="L88">        assertThrows(SupervisorNoValidoExcepcion.class, () -&gt; worker1.setSupervisor(worker2));</span>
+<span class="fc" id="L89">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span>Squirrel-Games (7 mar 2025 19:23:17)</div></body></html>

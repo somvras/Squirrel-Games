@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">Squirrel-Games (7 mar 2025 19:23:17)</a> &gt; <a href="../../index.html" class="el_group">Squirrel-Games</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">main</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">package main;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+
+import Excepciones.DificultadNoValidaExcepcion;
+import Excepciones.IntentoDeEliminarInfiltradoException;
+import Excepciones.ResponsableNoEsManagerException;
+import concursantes.Concursante;
+import pinkGuards.Manager;
+import pruebas.Prueba;
+
+<span class="nc" id="L13">public class Main {</span>
+
+	public static void main(String[] args) throws ResponsableNoEsManagerException, DificultadNoValidaExcepcion {
+	
+<span class="nc" id="L17">		Concursante c1 = new Concursante(001, &quot;Gacela&quot;, &quot;Thomson&quot;, &quot;Cudeira&quot;, &quot;01/01/2000&quot;, true, 20000);</span>
+<span class="nc" id="L18">		System.out.println(c1);</span>
+<span class="nc" id="L19">		Concursante c2 = new Concursante(3, &quot;Antonia&quot;, &quot;Pepota&quot;, &quot;Francesa&quot;, &quot;28/04/1958&quot;, false, 10000, &quot;maria&quot;, &quot;pascuala&quot;);</span>
+		//System.out.println(c2);
+		
+<span class="nc" id="L22">		ArrayList&lt;Concursante&gt; concursantes = new ArrayList&lt;Concursante&gt;();</span>
+<span class="nc" id="L23">		concursantes.add(c1); concursantes.add(c2);</span>
+<span class="nc" id="L24">		Manager responsable = new Manager(000001, &quot;Nombre&quot;, 500);</span>
+		
+<span class="nc" id="L26">		Prueba ejemplo = new Prueba(&quot;Nombre&quot;,&quot;Descripción&quot;,concursantes,responsable);</span>
+<span class="nc" id="L27">		System.out.println(ejemplo+&quot;\n&quot;);</span>
+		try {
+<span class="nc" id="L29">			ejemplo.simulacion(50);</span>
+<span class="nc" id="L30">		} catch (DificultadNoValidaExcepcion e){</span>
+<span class="nc" id="L31">			System.out.println(e.getMessage());</span>
+<span class="nc" id="L32">		} catch (IntentoDeEliminarInfiltradoException e){</span>
+<span class="nc" id="L33">			System.out.println(e.getMessage());</span>
+		}
+		
+<span class="nc" id="L36">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span>Squirrel-Games (7 mar 2025 19:23:17)</div></body></html>

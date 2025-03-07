@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>EdicionTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">Squirrel-Games (7 mar 2025 19:23:17)</a> &gt; <a href="../../index.html" class="el_group">Squirrel-Games</a> &gt; <a href="../index.html" class="el_bundle">tests</a> &gt; <a href="index.source.html" class="el_package">test</a> &gt; <span class="el_source">EdicionTest.java</span></div><h1>EdicionTest.java</h1><pre class="source lang-java linenums">package test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+
+import Excepciones.IdRepetidoException;
+import Excepciones.ResponsableNoEsManagerException;
+import concursantes.Concursante;
+import juegos.Edicion;
+import pinkGuards.Manager;
+import pinkGuards.PinkGuard;
+import pruebas.Prueba;
+
+<span class="fc" id="L17">class EdicionTest {</span>
+
+<span class="fc" id="L19">	private Edicion ej1 = new Edicion(2000, &quot;Ubicacion&quot;);</span>
+<span class="fc" id="L20">	private Concursante ej2 = null;</span>
+<span class="fc" id="L21">	private PinkGuard ej3 = null;</span>
+<span class="fc" id="L22">	private Prueba ej4 = null;</span>
+	
+	@Test
+	@DisplayName (&quot;Añadir un concursante&quot;)
+	@Tag (&quot;Participante&quot;)
+	void nuevoConcursanteExistente() throws IdRepetidoException {
+<span class="fc" id="L28">		ej1.nuevoParticipante(ej2);</span>
+<span class="fc" id="L29">		assertEquals(ej1.getParticipantesEdicion().size(),1);</span>
+<span class="fc" id="L30">	}</span>
+	
+	@Test
+	@DisplayName (&quot;Crear un nuevo concursante&quot;)
+	@Tag (&quot;Participante&quot;)
+	void nuevoConcursante() throws IdRepetidoException {
+<span class="fc" id="L36">		ej1.nuevoParticipante(001, &quot;Gacela&quot;, &quot;Thomson&quot;, &quot;Cudeira&quot;, &quot;01/01/2000&quot;, true, 20000);</span>
+<span class="fc" id="L37">		assertEquals(ej1.getParticipantesEdicion().size(),1);</span>
+<span class="fc" id="L38">	}</span>
+	
+	@Test
+	@DisplayName (&quot;Añadir un empleado&quot;)
+	@Tag (&quot;Empleado&quot;)
+	void nuevoEmpleadoExistente() throws IdRepetidoException {
+<span class="fc" id="L44">		ej1.nuevoEmpleado(ej3);</span>
+<span class="fc" id="L45">		assertEquals(ej1.getEmpleados().size(),1);</span>
+<span class="fc" id="L46">	}</span>
+	
+	@Test
+	@DisplayName (&quot;Añadir una prueba&quot;)
+	@Tag (&quot;Prueba&quot;)
+	void nuevaPruebaExistente() {
+<span class="fc" id="L52">		ej1.nuevaPrueba(ej4);</span>
+<span class="fc" id="L53">		assertEquals(ej1.getPruebas().size(),1);</span>
+<span class="fc" id="L54">	}</span>
+	
+	@Test
+	@DisplayName (&quot;Crear una nueva prueba&quot;)
+	@Tag (&quot;Prueba&quot;)
+	void nuevaPrueba() throws ResponsableNoEsManagerException {
+<span class="fc" id="L60">		Manager manager = new Manager(1, &quot;Manager&quot;, 100);</span>
+<span class="fc" id="L61">		ej1.nuevaPrueba(null, null, null, manager);</span>
+<span class="fc" id="L62">		assertEquals(ej1.getPruebas().size(),1);</span>
+<span class="fc" id="L63">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span>Squirrel-Games (7 mar 2025 19:23:17)</div></body></html>

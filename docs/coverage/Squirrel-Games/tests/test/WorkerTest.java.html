@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>WorkerTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">Squirrel-Games (7 mar 2025 19:23:17)</a> &gt; <a href="../../index.html" class="el_group">Squirrel-Games</a> &gt; <a href="../index.html" class="el_bundle">tests</a> &gt; <a href="index.source.html" class="el_package">test</a> &gt; <span class="el_source">WorkerTest.java</span></div><h1>WorkerTest.java</h1><pre class="source lang-java linenums">package test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+
+import Excepciones.SupervisorNoValidoExcepcion;
+import pinkGuards.Departamento;
+import pinkGuards.Manager;
+import pinkGuards.Rango;
+import pinkGuards.Worker;
+
+/**
+ * Pruebas unitarias para la clase Worker.
+ * 
+ * @author Mikael
+ * @version 1.0
+ */
+@Tag(&quot;Worker&quot;)
+@DisplayName(&quot;Pruebas de la clase Worker&quot;)
+<span class="fc" id="L23">class WorkerTest {</span>
+
+    @Test
+    @DisplayName(&quot;Crear Worker con supervisor válido&quot;)
+    void testCrearWorker() {
+        try {
+<span class="fc" id="L29">            Manager manager = new Manager(20, &quot;ManagerForWorker&quot;, 100);</span>
+<span class="fc" id="L30">            Worker worker = new Worker(21, &quot;Worker&quot;, Departamento.PREPARACION_JUEGOS, manager);</span>
+<span class="fc" id="L31">            assertEquals(21, worker.getId());</span>
+<span class="fc" id="L32">            assertEquals(&quot;Worker&quot;, worker.getNombre());</span>
+<span class="fc" id="L33">            assertEquals(Rango.WORKER, worker.getRango());</span>
+<span class="fc" id="L34">            assertEquals(Departamento.PREPARACION_JUEGOS, worker.getDepartamento());</span>
+<span class="fc" id="L35">            assertEquals(manager, worker.getSupervisor());</span>
+<span class="fc" id="L36">            String esperado = &quot;ID: 21, Nombre: Worker, Rango: WORKER, Supervisor: [ManagerForWorker - MANAGER], Departamento: PREPARACION_JUEGOS&quot;;</span>
+<span class="fc" id="L37">            assertEquals(esperado, worker.toString());</span>
+<span class="pc" id="L38">        } catch (SupervisorNoValidoExcepcion e) {</span>
+<span class="nc" id="L39">            fail(&quot;No se esperaba excepción: &quot; + e.getMessage());</span>
+        }
+<span class="fc" id="L41">    }</span>
+
+    @Test
+    @DisplayName(&quot;Crear Worker con supervisor inválido&quot;)
+    void testWorkerSupervisorInvalido() {
+        try {
+<span class="fc" id="L47">            Manager manager = new Manager(22, &quot;ManagerForWorker&quot;, 100);</span>
+<span class="fc" id="L48">            Worker worker1 = new Worker(23, &quot;Worker1&quot;, Departamento.LIMPIEZA_Y_MANTENIMIENTO, manager);</span>
+<span class="fc" id="L49">            assertThrows(SupervisorNoValidoExcepcion.class, () -&gt;</span>
+<span class="nc" id="L50">                new Worker(24, &quot;Worker2&quot;, Departamento.DISTRIBUCION_ALIMENTOS, worker1));</span>
+<span class="pc" id="L51">        } catch (SupervisorNoValidoExcepcion e) {</span>
+<span class="nc" id="L52">            fail(&quot;No se esperaba excepción al crear el primer Worker: &quot; + e.getMessage());</span>
+        }
+<span class="fc" id="L54">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span>Squirrel-Games (7 mar 2025 19:23:17)</div></body></html>

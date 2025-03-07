@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>ConcursanteTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">Squirrel-Games (7 mar 2025 19:23:17)</a> &gt; <a href="../../index.html" class="el_group">Squirrel-Games</a> &gt; <a href="../index.html" class="el_bundle">tests</a> &gt; <a href="index.source.html" class="el_package">test</a> &gt; <span class="el_source">ConcursanteTest.java</span></div><h1>ConcursanteTest.java</h1><pre class="source lang-java linenums">package test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+
+import concursantes.Concursante;
+
+<span class="fc" id="L11">class ConcursanteTest {</span>
+
+	@Test
+	@DisplayName (&quot;Crear concursante normal&quot;)
+	@Tag (&quot;Concursante&quot;)
+	void CrearConcursanteNormal() {
+<span class="fc" id="L17">		Concursante c1 = new Concursante(001, &quot;Gacela&quot;, &quot;Thomson&quot;, &quot;Cudeira&quot;, &quot;01/01/2000&quot;, true, 20000);</span>
+<span class="fc" id="L18">		assertEquals(c1.toString(), &quot;&quot;&quot;</span>
+				Participante nº: 1
+				Nombre: Gacela
+				Apellidos: Thomson
+				Fecha de nacimiento: 01/01/2000
+				Nacionalidad: Cudeira
+				Sexo: V
+				Deuda acumulada: 20000,00
+				&quot;&quot;&quot;);
+<span class="fc" id="L27">	}</span>
+	
+	@Test
+	@DisplayName (&quot;Crear concursante infiltrado&quot;)
+	@Tag (&quot;Concursante&quot;)
+	void CrearConcursanteInfiltrado() {
+<span class="fc" id="L33">		Concursante c2 = new Concursante(002, &quot;Chino&quot;, &quot;Cudeiro&quot;, &quot;Takeshino&quot;, &quot;01/01/2000&quot;, false, 40000, &quot;Paquita&quot;, &quot;Chocolatera&quot;);</span>
+<span class="fc" id="L34">		assertEquals(c2.toString(), &quot;&quot;&quot;</span>
+				Participante nº: 2
+				Nombre: Chino
+				Apellidos: Cudeiro
+				Fecha de nacimiento: 01/01/2000
+				Nacionalidad: Takeshino
+				Sexo: M
+				Deuda acumulada: 40000,00
+				INFILTRADO
+				Nombre Real: Paquita
+				Apellidos Reales: Chocolatera
+				&quot;&quot;&quot;);
+<span class="fc" id="L46">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span>Squirrel-Games (7 mar 2025 19:23:17)</div></body></html>

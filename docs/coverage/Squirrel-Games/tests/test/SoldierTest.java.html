@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>SoldierTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">Squirrel-Games (7 mar 2025 19:23:17)</a> &gt; <a href="../../index.html" class="el_group">Squirrel-Games</a> &gt; <a href="../index.html" class="el_bundle">tests</a> &gt; <a href="index.source.html" class="el_package">test</a> &gt; <span class="el_source">SoldierTest.java</span></div><h1>SoldierTest.java</h1><pre class="source lang-java linenums">package test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+
+import Excepciones.SupervisorNoValidoExcepcion;
+import pinkGuards.Arma;
+import pinkGuards.Manager;
+import pinkGuards.Rango;
+import pinkGuards.Soldier;
+import pinkGuards.Worker;
+import pinkGuards.Departamento;
+
+/**
+ * Pruebas unitarias para la clase Soldier.
+ * 
+ * @author Mikael
+ * @version 1.0
+ */
+@Tag(&quot;Soldier&quot;)
+@DisplayName(&quot;Pruebas de la clase Soldier&quot;)
+<span class="fc" id="L25">class SoldierTest {</span>
+
+    @Test
+    @DisplayName(&quot;Crear Soldier con supervisor válido&quot;)
+    void testCrearSoldier() {
+        try {
+<span class="fc" id="L31">            Manager manager = new Manager(10, &quot;ManagerForSoldier&quot;, 100);</span>
+<span class="fc" id="L32">            Soldier soldier = new Soldier(11, &quot;Soldier&quot;, Arma.MP5, 30, manager);</span>
+<span class="fc" id="L33">            assertEquals(11, soldier.getId());</span>
+<span class="fc" id="L34">            assertEquals(&quot;Soldier&quot;, soldier.getNombre());</span>
+<span class="fc" id="L35">            assertEquals(Rango.SOLDIER, soldier.getRango());</span>
+<span class="fc" id="L36">            assertEquals(Arma.MP5, soldier.getArma());</span>
+<span class="fc" id="L37">            assertEquals(30, soldier.getMunicion());</span>
+<span class="fc" id="L38">            assertEquals(manager, soldier.getSupervisor());</span>
+<span class="fc" id="L39">            String esperado = &quot;ID: 11, Nombre: Soldier, Rango: SOLDIER, Supervisor: [ManagerForSoldier - MANAGER], Arma: Rifle de asalto Heckler &amp; Koch MP5, Munición: 30&quot;;</span>
+<span class="fc" id="L40">            assertEquals(esperado, soldier.toString());</span>
+<span class="pc" id="L41">        } catch (SupervisorNoValidoExcepcion e) {</span>
+<span class="nc" id="L42">            fail(&quot;No se esperaba excepción: &quot; + e.getMessage());</span>
+        }
+<span class="fc" id="L44">    }</span>
+
+    @Test
+    @DisplayName(&quot;Crear Soldier con supervisor inválido&quot;)
+    void testSoldierSupervisorInvalido() {
+        try {
+<span class="fc" id="L50">            Manager supervisorForWorker = new Manager(12, &quot;Manager&quot;, 100);</span>
+<span class="fc" id="L51">            Worker worker = new Worker(13, &quot;Worker&quot;, Departamento.DISTRIBUCION_ALIMENTOS, supervisorForWorker);</span>
+<span class="fc" id="L52">            assertThrows(SupervisorNoValidoExcepcion.class, () -&gt;</span>
+<span class="nc" id="L53">                new Soldier(14, &quot;SoldierInvalid&quot;, Arma.G3, 20, worker));</span>
+<span class="pc" id="L54">        } catch (SupervisorNoValidoExcepcion e) {</span>
+<span class="nc" id="L55">            fail(&quot;No se esperaba excepción al crear Worker: &quot; + e.getMessage());</span>
+        }
+<span class="fc" id="L57">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span>Squirrel-Games (7 mar 2025 19:23:17)</div></body></html>

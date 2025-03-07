@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>Concursante.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">Squirrel-Games (7 mar 2025 19:23:17)</a> &gt; <a href="../../index.html" class="el_group">Squirrel-Games</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">concursantes</a> &gt; <span class="el_source">Concursante.java</span></div><h1>Concursante.java</h1><pre class="source lang-java linenums">package concursantes;
+
+import java.time.LocalDate;
+
+import Excepciones.AtributoNoExisteExcepcion;
+
+/**
+ * La clase Concursante contiene el constructor de los participantes del concurso y métodos algunas funciones que éstos podrán realizar
+ * @author Alberto
+ * @version 1.0
+ * @see Edicion
+ */
+public class Concursante {
+	 private int id;
+	 private String nombre, apellidos, nacionalidad, nombreReal, apellidosReales;
+	 private LocalDate fechaNacim;
+	 private double deudaAcumulada;
+	 private boolean sexo, esInfiltrado;
+	 
+	 
+	 /**
+	  * Constructor que crea instancias de los participantes normales.
+	  * @param id El identificador único del participante.
+	  * @param nombre El nombre del participante
+	  * @param apellidos Los apellidos del participante
+	  * @param nacionalidad La nacionalidad del participante
+	  * @param fecha_nacim La fecha de nacimiento del participante
+	  * @param sexo El sexo del participante
+	  * @param deuda La deuda acumulada previa del participante.
+	  * @param esInfiltrado Indica si el participante es un topo de la organización
+	  * @throws SexoNoValidoExcepcion Si el sexo introducido es diferente de &quot;V&quot; o &quot;M&quot;
+	  */
+<span class="fc" id="L33">	 public Concursante(int id, String nombre, String apellidos, String nacionalidad, String fecha_nacim, boolean sexo, double deuda){</span>
+<span class="fc" id="L34">		 this.id = id;</span>
+<span class="fc" id="L35">		 this.nombre = nombre;</span>
+<span class="fc" id="L36">		 this.apellidos = apellidos;</span>
+<span class="fc" id="L37">		 this.nacionalidad = nacionalidad;</span>
+<span class="fc" id="L38">		 this.fechaNacim = LocalDate.of(Integer.parseInt(fecha_nacim.substring(6)), Integer.parseInt(fecha_nacim.substring(3, 5)), Integer.parseInt(fecha_nacim.substring(0, 2)));</span>
+<span class="fc" id="L39">		 this.nacionalidad = nacionalidad;</span>
+<span class="fc" id="L40">		 this.sexo = sexo;</span>
+<span class="fc" id="L41">		this.deudaAcumulada = deuda;</span>
+<span class="fc" id="L42">		this.esInfiltrado = false; </span>
+		// this.coefAptitud = aptitud;
+<span class="fc" id="L44">	 }</span>
+
+	 /**
+	  * Constructor que crea instancias de los participantes infiltrados de la organización. El nombre y los apellidos son falsos, 
+	  * debe añadirse al final el nombre y los apellidos reales del participante.
+	  * @param id El identificador único del participante.
+	  * @param nombre El nombre falso del participante
+	  * @param apellidos Los apellidos del participante
+	  * @param nacionalidad La nacionalidad del participante
+	  * @param fecha_nacim La fecha de nacimiento del participante
+	  * @param sexo El sexo del participante. True para V y false para M
+	  * @param deuda La deuda acumulada previa del participante.
+	  * @param nombreReal. El nombre auténtico del participante
+	  * @param apellidosReales. Los apellidos auténticos del participante.
+	  */
+<span class="fc" id="L59">	 public Concursante(int id, String nombreFalso, String apellidosFalsos, String nacionalidad, String fecha_nacim, boolean sexo, double deuda, String nombreReal, String apellidosReales){</span>
+<span class="fc" id="L60">		 this.id = id;</span>
+<span class="fc" id="L61">		 this.nombre = nombreFalso;</span>
+<span class="fc" id="L62">		 this.apellidos = apellidosFalsos;</span>
+<span class="fc" id="L63">		 this.nacionalidad = nacionalidad;</span>
+<span class="fc" id="L64">		 this.fechaNacim = LocalDate.of(Integer.parseInt(fecha_nacim.substring(6)), Integer.parseInt(fecha_nacim.substring(3, 5)), Integer.parseInt(fecha_nacim.substring(0, 2)));</span>
+<span class="fc" id="L65">		 this.nacionalidad = nacionalidad;</span>
+<span class="fc" id="L66">		 this.sexo = sexo;</span>
+<span class="fc" id="L67">		this.deudaAcumulada = deuda;</span>
+<span class="fc" id="L68">		this.esInfiltrado = true;</span>
+<span class="fc" id="L69">		this.nombreReal = nombreReal;</span>
+<span class="fc" id="L70">		this.apellidosReales = apellidosReales;</span>
+		 //this.coefAptitud = aptitud;
+<span class="fc" id="L72">	 }</span>
+
+	public double getDeudaAcumulada() {
+<span class="nc" id="L75">		return this.deudaAcumulada;</span>
+	}
+
+
+	public void setDeudaAcumulada(double deudaAcumulada) {
+<span class="nc" id="L80">		this.deudaAcumulada = deudaAcumulada;</span>
+<span class="nc" id="L81">	}</span>
+
+
+	public int getId() {
+<span class="nc" id="L85">		return this.id;</span>
+	}
+
+
+	public String getNombre() {
+<span class="nc" id="L90">		return this.nombre;</span>
+	}
+
+
+	public String getApellidos() {
+<span class="nc" id="L95">		return this.apellidos;</span>
+	}
+
+
+	public String getNacionalidad() {
+<span class="nc" id="L100">		return this.nacionalidad;</span>
+	}
+
+
+	public LocalDate getFechaNacim() {
+<span class="nc" id="L105">		return this.fechaNacim;</span>
+	}
+
+
+	public boolean getSexo() {
+<span class="nc" id="L110">		return this.sexo;</span>
+	}
+
+	public String getNombreReal() throws AtributoNoExisteExcepcion {
+<span class="nc bnc" id="L114" title="All 2 branches missed.">		if (this.nombreReal.equals(null)) {</span>
+<span class="nc" id="L115">			throw new AtributoNoExisteExcepcion(&quot;El atributo que intentas conseguir no existe&quot;);</span>
+		}
+<span class="nc" id="L117">		return this.nombreReal;</span>
+	}
+
+	public String getApellidosReales() throws AtributoNoExisteExcepcion {
+<span class="nc bnc" id="L121" title="All 2 branches missed.">		if (this.apellidosReales.equals(&quot;&quot;)) {</span>
+<span class="nc" id="L122">			throw new AtributoNoExisteExcepcion(&quot;El atributo que intentas conseguir no existe&quot;);</span>
+		}
+<span class="nc" id="L124">		return apellidosReales;</span>
+	}
+
+	
+	public boolean esInfiltrado() {
+<span class="fc" id="L129">		return esInfiltrado;</span>
+	}
+	
+	@Override
+	public String toString(){
+<span class="fc" id="L134">		String fechaNacimientoS = this.fechaNacim.toString().substring(8) + &quot;/&quot; + this.fechaNacim.toString().substring(5,7) + &quot;/&quot; + this.fechaNacim.toString().substring(0,4);</span>
+		
+<span class="fc" id="L136">		String info = &quot;&quot;&quot;</span>
+				Participante nº: %d
+				Nombre: %s
+				Apellidos: %s
+				Fecha de nacimiento: %s
+				Nacionalidad: %s
+				Sexo: %c
+				Deuda acumulada: %.2f
+				&quot;&quot;&quot;;
+<span class="fc bfc" id="L145" title="All 2 branches covered.">		if (!this.esInfiltrado) {</span>
+<span class="pc bpc" id="L146" title="1 of 2 branches missed.">			return String.format(info, this.id, this.nombre, this.apellidos, fechaNacimientoS, this.nacionalidad, sexo ? 'V' : 'M', this.deudaAcumulada);</span>
+		} else {
+<span class="fc" id="L148">			info += &quot;&quot;&quot;</span>
+					INFILTRADO
+					Nombre Real: %s
+					Apellidos Reales: %s
+					&quot;&quot;&quot;;
+<span class="pc bpc" id="L153" title="1 of 2 branches missed.">			return String.format(info, this.id, this.nombre, this.apellidos, fechaNacimientoS, this.nacionalidad, sexo ? 'V' : 'M', this.deudaAcumulada, this.nombreReal, this.apellidosReales);</span>
+		}
+		 
+		
+			
+		
+		
+	}
+	 
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span>Squirrel-Games (7 mar 2025 19:23:17)</div></body></html>
