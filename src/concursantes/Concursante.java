@@ -16,7 +16,6 @@ public class Concursante {
 	 private LocalDate fechaNacim;
 	 private double deudaAcumulada;
 	 private boolean sexo, esInfiltrado;
-	 private float coefAptitud;
 	 
 	 
 	 /**
@@ -112,7 +111,7 @@ public class Concursante {
 	}
 
 	public String getNombreReal() throws AtributoNoExisteExcepcion {
-		if (this.nombreReal.equals("")) {
+		if (this.nombreReal.equals(null)) {
 			throw new AtributoNoExisteExcepcion("El atributo que intentas conseguir no existe");
 		}
 		return this.nombreReal;
@@ -126,11 +125,6 @@ public class Concursante {
 	}
 
 	
-	
-	public float getCoefAptitud() {
-		return coefAptitud;
-	}
-
 	public boolean esInfiltrado() {
 		return esInfiltrado;
 	}

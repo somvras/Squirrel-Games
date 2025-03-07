@@ -11,8 +11,17 @@ package pinkGuards;
  * @see Soldier
  */
 public enum Arma {
+    /**
+     * Representa la Pistola Glock 17.
+     */
     GLOCK17("Pistola Glock 17"),
+    /**
+     * Representa el Rifle de asalto Heckler & Koch MP5.
+     */
     MP5("Rifle de asalto Heckler & Koch MP5"),
+    /**
+     * Representa el Rifle automático Heckler & Koch G3.
+     */
     G3("Rifle automático Heckler & Koch G3");
     
     private final String descripcion;

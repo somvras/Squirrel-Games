@@ -11,8 +11,16 @@ package pinkGuards;
  * @see PinkGuard
  */
 public enum Rango {
+    /**
+     * Representa el rango de Worker.
+     */
     WORKER,
+    /**
+     * Representa el rango de Soldier.
+     */
     SOLDIER,
+    /**
+     * Representa el rango de Manager.
+     */
     MANAGER
 }
-

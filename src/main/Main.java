@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import Excepciones.DificultadNoValidaExcepcion;
+import Excepciones.IntentoDeEliminarInfiltradoException;
 import Excepciones.ResponsableNoEsManagerException;
 import concursantes.Concursante;
 import pinkGuards.Manager;
@@ -13,8 +14,8 @@ public class Main {
 
 	public static void main(String[] args) throws ResponsableNoEsManagerException, DificultadNoValidaExcepcion {
 	
-		Concursante c1 = new Concursante(1, "Paco", "Jiménez", "Española", "24/01/1967", true, 5000);
-		//System.out.println(c1);
+		Concursante c1 = new Concursante(001, "Gacela", "Thomson", "Cudeira", "01/01/2000", true, 20000);
+		System.out.println(c1);
 		Concursante c2 = new Concursante(3, "Antonia", "Pepota", "Francesa", "28/04/1958", false, 10000, "maria", "pascuala");
 		//System.out.println(c2);
 		
@@ -24,7 +25,14 @@ public class Main {
 		
 		Prueba ejemplo = new Prueba("Nombre","Descripción",concursantes,responsable);
 		System.out.println(ejemplo+"\n");
-		ejemplo.simulacion(50);
+		try {
+			ejemplo.simulacion(50);
+		} catch (DificultadNoValidaExcepcion e){
+			System.out.println(e.getMessage());
+		} catch (IntentoDeEliminarInfiltradoException e){
+			System.out.println(e.getMessage());
+		}
+		
 	}
 
 }
